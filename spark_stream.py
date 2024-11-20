@@ -17,12 +17,25 @@ def create_keyspace(session):
 def create_table(session):
     session.execute("""
     CREATE TABLE IF NOT EXISTS spark_streams.nyc_trip_data (
-        trip_id TEXT PRIMARY KEY,
+        vendor_id TEXT,
         pickup_datetime TEXT,
         dropoff_datetime TEXT,
         passenger_count TEXT,
         trip_distance FLOAT,
-        fare_amount FLOAT);
+        rate_code_id TEXT,
+        store_and_fwd_flag TEXT,
+        pu_location_id TEXT,
+        do_location_id TEXT,
+        payment_type TEXT,
+        fare_amount FLOAT,
+        extra FLOAT,
+        mta_tax FLOAT,
+        tip_amount FLOAT,
+        tolls_amount FLOAT,
+        improvement_surcharge FLOAT,
+        total_amount FLOAT,
+        PRIMARY KEY (vendor_id, pickup_datetime)
+    );
     """)
     print("Table created successfully!")
 
@@ -73,12 +86,23 @@ def create_cassandra_connection():
 
 def create_selection_df_from_kafka(spark_df):
     schema = StructType([
-        StructField("trip_id", StringType(), False),
+        StructField("vendor_id", StringType(), False),
         StructField("pickup_datetime", StringType(), False),
         StructField("dropoff_datetime", StringType(), False),
         StructField("passenger_count", StringType(), True),
         StructField("trip_distance", FloatType(), True),
-        StructField("fare_amount", FloatType(), True)
+        StructField("rate_code_id", StringType(), True),
+        StructField("store_and_fwd_flag", StringType(), True),
+        StructField("pu_location_id", StringType(), True),
+        StructField("do_location_id", StringType(), True),
+        StructField("payment_type", StringType(), True),
+        StructField("fare_amount", FloatType(), True),
+        StructField("extra", FloatType(), True),
+        StructField("mta_tax", FloatType(), True),
+        StructField("tip_amount", FloatType(), True),
+        StructField("tolls_amount", FloatType(), True),
+        StructField("improvement_surcharge", FloatType(), True),
+        StructField("total_amount", FloatType(), True),
     ])
 
     sel = spark_df.selectExpr("CAST(value AS STRING)") \
