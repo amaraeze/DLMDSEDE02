@@ -73,7 +73,6 @@ services:
       interval: 30s
       timeout: 10s
       retries: 5
-  
   control-center:
     image: confluentinc/cp-enterprise-control-center:7.4.0
     hostname: control-center
@@ -92,7 +91,7 @@ services:
       CONTROL_CENTER_INTERNAL_TOPICS_PARTITIONS: 1
       CONTROL_CENTER_MONITORING_INTERCEPTOR_TOPIC_PARTITIONS: 1
       CONFLUENT_METRICS_TOPIC_REPLICATION: 1
-      CONFLUENT_METRICS_ENABLE: 'false'
+      CONFLIENT_METRICS_ENABLE: 'false'
       PORT: 9021
     networks:
       - confluent
@@ -138,6 +137,7 @@ services:
         condition: service_healthy
     volumes:
       - ./dags:/opt/airflow/dags
+      - ./script/entrypoint.sh:/opt/airflow/script/entrypoint.sh
       - ./requirements.txt:/opt/airflow/requirements.txt
     environment:
       - LOAD_EX=n
@@ -169,9 +169,6 @@ services:
       - "7077:7077"
     networks:
       - confluent
-    volumes:
-      - ./spark-checkpoints:/tmp/checkpoints  # Persistent volume for checkpointing
-
   spark-worker:
     image: bitnami/spark:latest
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
@@ -180,12 +177,10 @@ services:
     environment:
       SPARK_MODE: worker
       SPARK_WORKER_CORES: 2
-      SPARK_WORKER_MEMORY: 2g  # Increased memory allocation
+      SPARK_WORKER_MEMORY: 1g
       SPARK_MASTER_URL: spark://spark-master:7077
     networks:
       - confluent
-    volumes:
-      - ./spark-checkpoints:/tmp/checkpoints  # Ensure worker has access to checkpointing
 
   cassandra_db:
     image: cassandra:latest
@@ -200,6 +195,5 @@ services:
       - CASSANDRA_PASSWORD=cassandra
     networks:
       - confluent
-
 networks:
   confluent:
