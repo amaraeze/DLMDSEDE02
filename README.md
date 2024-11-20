@@ -1,4 +1,4 @@
-![data_flowchart_docker](https://github.com/user-attachments/assets/8d02063d-50d7-42bf-8e54-127349f7ecf9)
+
 # DLMDSEDE02
 
 Realtime Data Streaming | End-to-End Data Engineering Project
@@ -21,5 +21,5 @@ The Control Center enables monitoring of Kafka streams, while the Schema Registr
 
 The entire pipeline is fully containerized with Docker, simplifying deployment and enabling scalability and flexibility. Each component operates as a separate Docker container, facilitating smooth interactions and easy management of the overall system
 
-
+![data_flowchart_docker](https://github.com/user-attachments/assets/8d02063d-50d7-42bf-8e54-127349f7ecf9)
 To view the source code, visit GitHub repository: https://github.com/amaraeze/DLMDSEDE02.git
