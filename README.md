@@ -1,3 +1,4 @@
+![data_flowchart_docker](https://github.com/user-attachments/assets/8d02063d-50d7-42bf-8e54-127349f7ecf9)
 # DLMDSEDE02
 
 Realtime Data Streaming | End-to-End Data Engineering Project
