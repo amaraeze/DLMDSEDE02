@@ -1,7 +1,8 @@
-![data_flowchart_docker](https://github.com/user-attachments/assets/8d02063d-50d7-42bf-8e54-127349f7ecf9)
 # DLMDSEDE02
 
 Realtime Data Streaming | End-to-End Data Engineering Project
+
+![data_flowchart_docker](https://github.com/user-attachments/assets/8d02063d-50d7-42bf-8e54-127349f7ecf9)
 
 This project centers on implementing a robust, end-to-end data engineering pipeline, covering every stage from data ingestion to processing and storage. The tech stack includes Docker, Apache Airflow, Kafka, Zookeeper, Spark, and Cassandra, all of which contribute to efficient deployment and scalability.
 
