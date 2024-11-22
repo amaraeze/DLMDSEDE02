@@ -1,6 +1,7 @@
 # DLMDSEDE02
 
 Realtime Data Streaming | End-to-End Data Engineering Project
+This project implements a robust data engineering pipeline using Docker, Apache Airflow, Kafka, Spark, and Cassandra. Key solutions include real-time data ingestion with Kafka, parallel processing with Spark, scalable storage with Cassandra, and seamless orchestration with Airflow. The pipeline ensures reliability, scalability, and maintainability while integrating advanced security measures for data governance
 
 ![data_flowchart_docker](https://github.com/user-attachments/assets/8d02063d-50d7-42bf-8e54-127349f7ecf9)
 
