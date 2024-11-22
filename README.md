@@ -27,3 +27,5 @@ The entire pipeline is fully containerized with Docker, simplifying deployment a
 
 
 To view the source code, visit GitHub repository: https://github.com/amaraeze/DLMDSEDE02.git
+
+Link to a video demonstration of the project: https://www.loom.com/share/a8f4f212a9f04b35bcfb579fbda4016f?sid=a2f72347-5912-45e4-9028-106554eb4de4
